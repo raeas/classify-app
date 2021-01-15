@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BroswerRouter } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import BookshelfMain from '../BookshelfMain/BookshelfMain'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
@@ -8,6 +8,8 @@ import STORE from '../dummy-store'
 import BookshelfCategory from '../BookshelfCategory/BookshelfCategory'
 import AddBook from '../AddBook/AddBook'
 import SearchBox from '../SearchBox/SearchBox'
+import Nav from '../Nav/Nav'
+import About from '../About/About'
 
 
 class App extends Component {
@@ -20,7 +22,17 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <Header />
+        <nav>
+          <Nav />
+        </nav>
+        <header>
+          <Header />
+        </header>
+        <main>
+          <Route path='/about' component={About} />
+          <Route path='/bookshelf' component={BookshelfMain} />
+
+        </main>
         <SearchBox />
         <AddBook           
           classes={this.state.classes}
@@ -29,7 +41,11 @@ class App extends Component {
           books={this.state.books}
           classes={this.state.classes}
           subclasses={this.state.subclasses}/>
-        <BookshelfMain />
+        <BookshelfMain 
+          books={this.state.books}
+          classes={this.state.classes}
+          subclasses={this.state.subclasses}
+        />
         <Footer />
       </div>
     );

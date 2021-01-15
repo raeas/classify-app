@@ -4,8 +4,15 @@ import './About.css';
 
 function About() {
   return (
-    <div className='App__header'>
+    <div className='About'>
       <h1>About Page</h1>
+      <p>This is information about this app</p>
+      <ul>
+        <li>How to use it</li>
+        <li>Why you should us it</li>
+        <li>Basic Navigation</li>
+        <li>etc., etc., etc.</li>
+      </ul>
     </div>
   );
 }

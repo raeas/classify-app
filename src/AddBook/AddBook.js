@@ -5,8 +5,9 @@ class AddBook extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
-      author: '',
+      title: 'The Wizard of Oz',
+      author: 'Baum, Frank A.',
+      description: 'A book about Dorothy',
       category: ''
     }
     //this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,14 +30,28 @@ class AddBook extends Component {
       <div className='AddBookForm'>
         <h2>AddBook Component</h2>
           <form onSubmit={this.handleSubmit}>
+            <label>
+              Title:
+            </label>
             <input
               name='title'
               value={this.state.title}
               onChange={this.handleChange}
               />
+            <label>
+              Author:
+            </label>
             <input
               name='author'
               value={this.state.author}
+              onChange={this.handleChange}
+              />
+            <label>
+              Description:
+            </label>
+            <input
+              name='description'
+              value={this.state.description}
               onChange={this.handleChange}
               />
             <input type="submit" value="Submit" />

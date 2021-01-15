@@ -1,0 +1,9 @@
+.About {
+  background-color: #e8eddf;
+  min-height: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #282c34;
+}
