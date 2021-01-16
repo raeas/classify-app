@@ -6,13 +6,15 @@ class AddBook extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: 'The Wizard of Oz',
-      author: 'Baum, Frank A.',
-      description: 'A book about Dorothy',
-      category: ''
+      title: '',
+      author: '',
+      description: '',
+      category: '',
+      subcategory: ''
     }
     //this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this)
+    this.addCategory = this.addCategory.bind(this)
   }
 
   handleChange = () => {
@@ -23,8 +25,14 @@ class AddBook extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     console.log('handleSumbit')
+    //this will be a POST not setState() using API
     this.setState()
     this.props.history.push('/bookshelf')
+  }
+
+  addCategory = (category) => {
+    console.log('category ', category)
+    this.setState({category:category})
   }
 
   render() {
@@ -56,7 +64,7 @@ class AddBook extends Component {
               value={this.state.description}
               onChange={this.handleChange}
               />
-              <Accordion />
+              <Accordion addCategory={this.addCategory} />
             <input type="submit" value="Submit" />
           </form>
       </div>

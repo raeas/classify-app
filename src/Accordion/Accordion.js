@@ -13,7 +13,8 @@ class Accordion extends React.Component {
     }
 
     handleSetActiveSection = (sectionIndex) => {
-        this.setState({ activeSectionIndex: sectionIndex })        
+        this.setState({ activeSectionIndex: sectionIndex }) 
+        this.props.addCategory(sectionIndex)       
     }
 
     renderItem(section, index, activeSectionIndex) {
@@ -31,7 +32,7 @@ class Accordion extends React.Component {
       console.log(subs)
       return (
         <>
-        {
+          {
             subs.map(sub => (
               <p key={sub.id}>{sub.name}</p>
             ))
@@ -46,7 +47,7 @@ class Accordion extends React.Component {
         return (
             <ul className='Accordion'>
                 {this.state.sections.map((section, index) =>
-                this.renderItem(section, index, activeSectionIndex)
+                  this.renderItem(section, index, activeSectionIndex)
                 )}
             </ul>
         )
