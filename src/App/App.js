@@ -16,8 +16,8 @@ import Home from '../Home/Home'
 class App extends Component {
   state = {
     books: STORE.books,
-    classes: STORE.classes,
-    subclasses: STORE.classes.subclasses
+    categories: STORE.categories,
+    subcategories: STORE.categories.subcategories
   }
 
   render() {

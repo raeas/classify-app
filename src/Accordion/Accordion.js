@@ -4,37 +4,37 @@ import STORE from '../dummy-store'
 
 class Accordion extends React.Component {
     static defaultProps = {
-        sections: []
+        categories: []
     };
 
     state = {
-        activeSectionIndex: null,
-        sections: STORE.classes
+        activeCategoryIndex: null,
+        categories: STORE.categories
     }
 
-    handleSetActiveSection = (sectionIndex) => {
-        this.setState({ activeSectionIndex: sectionIndex }) 
-        this.props.addCategory(sectionIndex)       
+    handleSetActiveCategory = (categoryIndex) => {
+        this.setState({ activeCategoryIndex: categoryIndex }) 
+        this.props.addCategory(categoryIndex)       
     }
 
-    renderItem(section, index, activeSectionIndex) {
+    renderItem(category, index, activeCategoryIndex) {
         return (
             <li className='Accordion_item' key={index}>
-                <button type='button' onClick={() => this.handleSetActiveSection(index)}>
-                    {section.name}
+                <button type='button' onClick={() => this.handleSetActiveCategory(index)}>
+                    {category.name}
                 </button>
-                {(activeSectionIndex === index) && this.subcategories(section['subclasses'])}
+                {(activeCategoryIndex === index) && this.subcategories(category['subcategories'])}
             </li>
         )
     }
 
-    subcategories(subs) {
-      console.log(subs)
+    subcategories(subcategories) {
+      console.log(subcategories)
       return (
         <>
           {
-            subs.map(sub => (
-              <p key={sub.id}>{sub.name}</p>
+            subcategories.map(subcategories => (
+              <p key={subcategories.id}>{subcategories.name}</p>
             ))
           }
         </>
@@ -42,12 +42,12 @@ class Accordion extends React.Component {
     }
 
     render() {
-        const { activeSectionIndex } = this.state
+        const { activeCategoryIndex } = this.state
         // const { sections } = this.props
         return (
             <ul className='Accordion'>
-                {this.state.sections.map((section, index) =>
-                  this.renderItem(section, index, activeSectionIndex)
+                {this.state.categories.map((category, index) =>
+                  this.renderItem(category, index, activeCategoryIndex)
                 )}
             </ul>
         )

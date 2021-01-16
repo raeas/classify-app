@@ -4,36 +4,36 @@ const STORE = {
       "id": 1,
       "title": "Untamed",
       "author": "Doyle, Glennon",
-      "classId": 2,
-      "subclassId": 1
+      "categoryId": 2,
+      "subcategoryId": 1
     },
     {
       "id": 2,
       "title": "The Splended and the Vile",
       "author": "Larson, Erik",
-      "classId": 4,
-      "subclassId": 3
+      "categoryId": 4,
+      "subcategoryId": 3
     },
     {
       "id": 3,
       "title": "Happiness Becomes You",
       "author": "Turner, Tina",
-      "classId": 1,
-      "subclassId": 1
+      "categoryId": 1,
+      "subcategoryId": 1
     },
     {
       "id": 4,
       "title": "No Time Like the Future",
       "author": "Fox, Michael J.",
-      "classId": 3,
-      "subclassId": 3
+      "categoryId": 3,
+      "subcategoryId": 3
     },
   ],
-  "classes": [
+  "categories": [
     {
       "id": 1,
       "name": "1 Philosophy & Psychology",
-      "subclasses": [
+      "subcategories": [
         {
           "id": 1,
           "name": "150 Psychology",
@@ -51,7 +51,7 @@ const STORE = {
     {
       "id": 2,
       "name": "3 Social Sciences",
-      "subclasses": [
+      "subcategories": [
         {
           "id": 1,
           "name": "300 Sociology & Anthropology",
@@ -69,7 +69,7 @@ const STORE = {
     {
       "id": 3,
       "name": "7 Arts & Recreation",
-      "subclasses": [
+      "subcategories": [
         {
           "id": 1,
           "name": "770 Photography",
@@ -87,7 +87,7 @@ const STORE = {
     {
       "id": 4,
       "name": "9 History & Geography",
-      "subclasses": [
+      "subcategories": [
         {
           "id": 1,
           "name": "920 Biography & Genealogy",
