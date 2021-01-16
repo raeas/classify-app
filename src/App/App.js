@@ -10,6 +10,7 @@ import AddBook from '../AddBook/AddBook'
 import SearchBox from '../SearchBox/SearchBox'
 import Nav from '../Nav/Nav'
 import About from '../About/About'
+import Home from '../Home/Home'
 
 
 class App extends Component {
@@ -29,11 +30,12 @@ class App extends Component {
           <Header />
         </header>
         <main>
+          <Route exact path='/' component={Home} />
           <Route path='/about' component={About} />
           <Route path='/bookshelf' component={BookshelfMain} />
-
+          <Route path='/add-book' component={AddBook} />
         </main>
-        <SearchBox />
+        {/* <SearchBox />
         <AddBook           
           classes={this.state.classes}
           subclasses={this.state.subclasses}/>
@@ -45,7 +47,7 @@ class App extends Component {
           books={this.state.books}
           classes={this.state.classes}
           subclasses={this.state.subclasses}
-        />
+        /> */}
         <Footer />
       </div>
     );

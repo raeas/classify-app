@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Accordion from '../Accordion/Accordion'
 import './AddBook.css';
 
 class AddBook extends Component {
@@ -23,6 +24,7 @@ class AddBook extends Component {
     e.preventDefault()
     console.log('handleSumbit')
     this.setState()
+    this.props.history.push('/bookshelf')
   }
 
   render() {
@@ -54,6 +56,7 @@ class AddBook extends Component {
               value={this.state.description}
               onChange={this.handleChange}
               />
+              <Accordion />
             <input type="submit" value="Submit" />
           </form>
       </div>
