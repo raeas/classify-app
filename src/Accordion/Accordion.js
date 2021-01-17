@@ -11,7 +11,7 @@ class Accordion extends React.Component {
     state = {
         activeCategoryIndex: null,
         categories: STORE.categories,
-        subcategories: STORE.subcategories,
+        subcategories: STORE.categories[0].subcategories,
         subcategory: ''
     }
 
@@ -20,9 +20,9 @@ class Accordion extends React.Component {
         this.props.addCategory(categoryIndex)       
     }
 
-    handleAddsubcategory = (subcategory) => {
-      this.setState({ subcategory: subcategory }) 
-      this.props.addSubcategory(subcategory)       
+    handleAddsubcategory = (e) => {
+      // this.setState({ subcategory: subcategory }) 
+      this.props.addSubcategory(e.target.value)       
   }
 
     renderCategory(category, index, activeCategoryIndex) {
@@ -31,7 +31,7 @@ class Accordion extends React.Component {
                 <button className="Category__button" type='button' onClick={() => this.handleSetActiveCategory(index)}>
                     {category.name}
                 </button>
-                {(activeCategoryIndex === index) && this.renderSubcategories(category['subcategories'])}
+                {(activeCategoryIndex === index) && this.renderSubcategories(category['subcategories'], category.name)}
             </ul>
         )
     }
@@ -46,9 +46,9 @@ class Accordion extends React.Component {
                 <input 
                   type='radio'
                   className='subcategory_option' 
-                  name={subcategory.name} 
-                  value={this.props.subcategory}
-                  onChange={() => this.handleAddsubcategory(this.props.category)}
+                  name='subcatetory' 
+                  value={subcategory.name}
+                  onChange={(e) => this.handleAddsubcategory(e)}
                />
                 <label>{subcategory.name}</label>
               </li>

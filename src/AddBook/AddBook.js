@@ -15,6 +15,7 @@ class AddBook extends Component {
     //this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this)
     this.addCategory = this.addCategory.bind(this)
+    this.addSubcategory = this.addSubcategory.bind(this)
   }
 
   handleChange = () => {
@@ -37,7 +38,7 @@ class AddBook extends Component {
 
   addSubcategory = (subcategory) => {
     console.log('subcategory ', subcategory)
-    this.setState({subcategory:subcategory})
+    this.setState({subcategory})
   }
 
   render() {
@@ -78,7 +79,5 @@ class AddBook extends Component {
     )
   }
 }
-
-
 
 export default AddBook;
