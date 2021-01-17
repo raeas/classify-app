@@ -4,12 +4,15 @@ import STORE from '../dummy-store'
 
 class Accordion extends React.Component {
     static defaultProps = {
-        categories: []
+        categories: [],
+        subcategories: []
     };
 
     state = {
         activeCategoryIndex: null,
-        categories: STORE.categories
+        categories: STORE.categories,
+        subcategories: STORE.subcategories,
+        subcategory: ''
     }
 
     handleSetActiveCategory = (categoryIndex) => {
@@ -17,24 +20,38 @@ class Accordion extends React.Component {
         this.props.addCategory(categoryIndex)       
     }
 
-    renderItem(category, index, activeCategoryIndex) {
+    handleAddsubcategory = (subcategory) => {
+      this.setState({ subcategory: subcategory }) 
+      this.props.addSubcategory(subcategory)       
+  }
+
+    renderCategory(category, index, activeCategoryIndex) {
         return (
-            <li className='Accordion_item' key={index}>
-                <button type='button' onClick={() => this.handleSetActiveCategory(index)}>
+            <ul className='Accordion__item' key={index}>
+                <button className="Category__button" type='button' onClick={() => this.handleSetActiveCategory(index)}>
                     {category.name}
                 </button>
-                {(activeCategoryIndex === index) && this.subcategories(category['subcategories'])}
-            </li>
+                {(activeCategoryIndex === index) && this.renderSubcategories(category['subcategories'])}
+            </ul>
         )
     }
 
-    subcategories(subcategories) {
+    renderSubcategories(subcategories) {
       console.log(subcategories)
       return (
         <>
           {
-            subcategories.map(subcategories => (
-              <p key={subcategories.id}>{subcategories.name}</p>
+            subcategories.map(subcategory => (
+              <li key={subcategory.id}>
+                <input 
+                  type='radio'
+                  className='subcategory_option' 
+                  name={subcategory.name} 
+                  value={this.props.subcategory}
+                  onChange={() => this.handleAddsubcategory(this.props.category)}
+               />
+                <label>{subcategory.name}</label>
+              </li>
             ))
           }
         </>
@@ -43,13 +60,12 @@ class Accordion extends React.Component {
 
     render() {
         const { activeCategoryIndex } = this.state
-        // const { sections } = this.props
         return (
-            <ul className='Accordion'>
+            <div className='Accordion'>
                 {this.state.categories.map((category, index) =>
-                  this.renderItem(category, index, activeCategoryIndex)
+                  this.renderCategory(category, index, activeCategoryIndex)
                 )}
-            </ul>
+            </div>
         )
     }
 }

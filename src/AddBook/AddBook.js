@@ -35,6 +35,11 @@ class AddBook extends Component {
     this.setState({category:category})
   }
 
+  addSubcategory = (subcategory) => {
+    console.log('subcategory ', subcategory)
+    this.setState({subcategory:subcategory})
+  }
+
   render() {
     return (
       <div className='AddBookForm'>
@@ -64,7 +69,9 @@ class AddBook extends Component {
               value={this.state.description}
               onChange={this.handleChange}
               />
-              <Accordion addCategory={this.addCategory} />
+              <Accordion 
+                addCategory={this.addCategory} 
+                addSubcategory={this.addSubcategory} />
             <input type="submit" value="Submit" />
           </form>
       </div>
