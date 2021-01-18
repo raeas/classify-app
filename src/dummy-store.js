@@ -4,29 +4,29 @@ const STORE = {
       "id": 1,
       "title": "Untamed",
       "author": "Doyle, Glennon",
-      "categoryId": 2,
-      "subcategoryId": 1
+      "categoryId": "3 Social Sciences",
+      "subcategoryId": "300 Sociology & Anthropology"
     },
     {
       "id": 2,
       "title": "The Splended and the Vile",
       "author": "Larson, Erik",
-      "categoryId": 4,
-      "subcategoryId": 3
+      "categoryId": "9 History & Geography",
+      "subcategoryId": "940 European History"
     },
     {
       "id": 3,
       "title": "Happiness Becomes You",
       "author": "Turner, Tina",
-      "categoryId": 1,
-      "subcategoryId": 1
+      "categoryId": "1 Philosophy & Psychology",
+      "subcategoryId": "150 Psychology"
     },
     {
       "id": 4,
       "title": "No Time Like the Future",
       "author": "Fox, Michael J.",
-      "categoryId": 3,
-      "subcategoryId": 3
+      "categoryId": "7 Arts & Recreation",
+      "subcategoryId": "790 Amusements & Recreation"
     },
   ],
   "categories": [
