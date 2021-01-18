@@ -7,7 +7,7 @@ import './App.css';
 import STORE from '../dummy-store'
 // import BookshelfCategory from '../BookshelfCategory/BookshelfCategory'
 import AddBook from '../AddBook/AddBook'
-import SearchBox from '../SearchBox/SearchBox'
+// import SearchBox from '../SearchBox/SearchBox'
 import Nav from '../Nav/Nav'
 import About from '../About/About'
 import Home from '../Home/Home'
