@@ -9,8 +9,8 @@ function BookshelfMain(props) {
   console.log('store ', STORE)
   console.log(props)
   const books = STORE.books
-  const categories = STORE.categories
-  const subcategories = STORE.subcategories
+  // const categories = STORE.categories
+  // const subcategories = STORE.subcategories
   // const category = findCategory(books)
   // console.log(category)
   return (

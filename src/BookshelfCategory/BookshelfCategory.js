@@ -6,8 +6,8 @@ import STORE from '../dummy-store'
 function BookshelfCategory(props) {
   console.log(props)
   const books = STORE.books
-  const categories = STORE.categories
-  const subcategories = STORE.subcategories
+  // const categories = STORE.categories
+  // const subcategories = STORE.subcategories
   return (
     <div className='Bookshelf__catetory'>
       <h2>BookshelfCategory Component</h2>

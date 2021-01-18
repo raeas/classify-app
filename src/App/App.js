@@ -5,7 +5,7 @@ import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import './App.css';
 import STORE from '../dummy-store'
-import BookshelfCategory from '../BookshelfCategory/BookshelfCategory'
+// import BookshelfCategory from '../BookshelfCategory/BookshelfCategory'
 import AddBook from '../AddBook/AddBook'
 import SearchBox from '../SearchBox/SearchBox'
 import Nav from '../Nav/Nav'
