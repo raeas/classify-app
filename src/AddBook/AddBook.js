@@ -44,7 +44,7 @@ class AddBook extends Component {
   render() {
     return (
       <div className='AddBookForm'>
-        <h2>AddBook Component</h2>
+        <h2>Add a Book</h2>
           <form onSubmit={this.handleSubmit}>
             <label>
               Title:
