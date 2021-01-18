@@ -9,7 +9,7 @@ function About() {
       <p>This is information about this app</p>
       <ul>
         <li>How to use it</li>
-        <li>Why you should us it</li>
+        <li>Why you should use it</li>
         <li>Basic Navigation</li>
         <li>etc., etc., etc.</li>
       </ul>
