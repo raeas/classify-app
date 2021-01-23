@@ -12,6 +12,9 @@ function Nav() {
         <Link to='/about'>
           About
         </Link>
+        <Link to='/add-book'>
+          Add Book
+        </Link>
         <Link to='/bookshelf'>
           Bookshelf
         </Link>

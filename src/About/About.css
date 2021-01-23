@@ -7,3 +7,12 @@
   justify-content: center;
   color: #282c34;
 }
+
+li {
+  text-align: left;
+}
+
+ol {
+  padding: 50px;
+  margin: 25px;
+}

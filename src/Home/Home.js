@@ -7,7 +7,9 @@ import './Home.css'
 function Home() {
   return (
     <>
-      <h1>Home</h1>
+      <h1>Welcome to the Classify App!</h1>
+      <p>The Classify App allows you to add your books to a bookshelf and classify them with the Dewey Decimal Classification System.</p>
+      <p>To add a book, click "Get Started."</p>
       <button><Link to='/add-book' className='text-link'>Get Started</Link></button>
     </>
   );

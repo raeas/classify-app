@@ -13,3 +13,7 @@
 .Add__book button {
   background-color: #ff6f59;
 }
+
+.Bookshelf__main li {
+  text-align: center;
+}
