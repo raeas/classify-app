@@ -10,6 +10,11 @@
     padding: 0;
   }
   
+  .Accordion__item li {
+    display: block;
+    /* float: left; */
+  }
+
   .Category__button {
     width: 100%;
     background-color: #17c3b2;
@@ -21,13 +26,17 @@
     cursor: pointer;
   }
 
-  label {
-    display: inline;
+  .Accordion label {
+    display: inline-block;
   }
 
-  /* input[type=radio],
+  .Subcat input[type=radio],
   input.radio {
     float: left;
     clear: none;
     margin: 2px 0 0 2px;
-  } */
+  }
+
+  .Subcat li {
+    font-size: 100em;
+  }

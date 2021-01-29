@@ -8,11 +8,11 @@
   color: #282c34;
 }
 
-li {
+.About li {
   text-align: left;
 }
 
-ol {
+.About ol {
   padding: 50px;
   margin: 25px;
 }
