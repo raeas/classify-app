@@ -1,8 +1,14 @@
 import React from "react";
 import './Accordion.css';
-import STORE from '../dummy-store'
+// import STORE from '../dummy-store'
+import AppContext from '../AppContext'
 
 class Accordion extends React.Component {
+
+  static contextType = AppContext
+
+  const 
+
     static defaultProps = {
         categories: [],
         subcategories: []
@@ -10,8 +16,9 @@ class Accordion extends React.Component {
 
     state = {
         activeCategoryIndex: null,
-        categories: STORE.categories,
-        subcategories: STORE.categories[0].subcategories,
+        categories: this.context.categories,
+        subcategories: this.context.subcategories,
+        catsandsubcats: this.context.catsandsubcats,
         subcategory: ''
     }
 
@@ -21,7 +28,6 @@ class Accordion extends React.Component {
     }
 
     handleAddsubcategory = (e) => {
-      // this.setState({ subcategory: subcategory }) 
       this.props.addSubcategory(e.target.value)       
   }
 
@@ -31,30 +37,32 @@ class Accordion extends React.Component {
                 <button className="Category__button" type='button' onClick={() => this.handleSetActiveCategory(index)}>
                     {category.name}
                 </button>
-                {(activeCategoryIndex === index) && this.renderSubcategories(category['subcategories'], category.name)}
+                {(activeCategoryIndex === index) && this.renderSubcategories(category)}
             </ul>
         )
     }
 
-    renderSubcategories(subcategories) {
-      console.log(subcategories)
+    renderSubcategories(category) {
       return (
-        <>
-          {
-            subcategories.map(subcategory => (
-              <li key={subcategory.id}>
-                <input 
-                  type='radio'
-                  className='subcategory_option' 
-                  name='subcatetory' 
-                  value={subcategory.name}
-                  onChange={(e) => this.handleAddsubcategory(e)}
-               />
-                <label>{subcategory.name}</label>
-              </li>
-            ))
-          }
-        </>
+            this.state.subcategories.map(subcategory => {
+              console.log('subcats.cat ', subcategory.category)
+              console.log('cat ', category)
+              if (subcategory.category === category.id) {
+                return <li className='Subcat' key={subcategory.id}>
+                  <label>
+                    <input
+                      type='radio'
+                      className='subcategory_option' 
+                      name='subcatetory' 
+                      value={subcategory.name}
+                      onChange={(e) => this.handleAddsubcategory(e)}
+                    />
+                  {subcategory.name}
+                  </label>
+                </li>
+              }
+              else {return ''}
+            })
       )
     }
 
