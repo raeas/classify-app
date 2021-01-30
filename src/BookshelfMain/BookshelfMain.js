@@ -1,29 +1,31 @@
 import React from 'react';
 import './BookshelfMain.css';
-import STORE from '../dummy-store';
+// import STORE from '../dummy-store';
 import { Link } from 'react-router-dom'
-// import { findCategory } from '../books-helpers';
-
+import { useContext } from 'react';
+import AppContext from '../AppContext'
 
 function BookshelfMain(props) {
-  console.log('store ', STORE)
-  console.log(props)
-  const books = STORE.books
-  // const categories = STORE.categories
-  // const subcategories = STORE.subcategories
-  // const category = findCategory(books)
-  // console.log(category)
+
+  const context = useContext(AppContext)
+  console.log('context ', context.bookshelf)
+
+  // console.log('store ', STORE)
+  console.log('props ', props)
+  const bookshelf = context.bookshelf
+
   return (
     <>
       <div className='Bookshelf__main'>
         <h2>Bookshelf</h2>
         {
-          books.map(book => ( 
-            <li key={book.id} style={{listStyle:'none'}}>
-              <p>Title: {book.title}</p>
-              <p>Author: {book.author}</p>
-              <p>Category: {book.categoryId}</p>
-              <p>Subcategory: {book.subcategoryId}</p>
+          context.bookshelf.map(bookshelf => ( 
+            <li key={bookshelf.id} style={{listStyle:'none'}}>
+              <p>Title: {bookshelf.title}</p>
+              <p>Author Last Name: {bookshelf.author_last}</p>
+              <p>Author First Name: {bookshelf.author_first}</p>
+              <p>Category: {bookshelf.category}</p>
+              <p>Subcategory: {bookshelf.subcategory}</p>
               <button>Update</button>
               <button>Delete</button>
               <hr />

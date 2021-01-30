@@ -18,7 +18,7 @@ class App extends Component {
     books: [],
     categories: [],
     subcategories: [],
-    catsandsubcats:  []
+    bookshelf:  []
   }
 
   // constructor() {
@@ -54,16 +54,16 @@ class App extends Component {
     }
   })
     let subcategories = await subcategoriesRes.json()
-  //   let catsAndSubcatsRes = await fetch(config.API_ENDPOINT + 'catsandsubcats', 
-  //   {
-  //   method: 'GET',
-  //   headers: {
-  //     'content-type': 'application/json',
-  //     'Authorization': `Bearer ${config.API_KEY}`
-  //   }
-  // })
-  //   let catsandsubcats = await catsAndSubcatsRes.json()
-    this.setState({books, categories, subcategories})
+    let bookshelfRes = await fetch(config.API_ENDPOINT + 'bookshelf', 
+    {
+    method: 'GET',
+    headers: {
+      'content-type': 'application/json',
+      'Authorization': `Bearer ${config.API_KEY}`
+    }
+  })
+    let bookshelf = await bookshelfRes.json()
+    this.setState({books, categories, subcategories, bookshelf})
   }
 
   // addBook = (book, category, subcategory) => {
@@ -89,7 +89,7 @@ class App extends Component {
       books: this.state.books,
       categories: this.state.categories,
       subcategories: this.state.subcategories,
-      catsandsubcats: this.state.catsandsubcats,
+      bookshelf: this.state.bookshelf,
       addBook: this.state.addBook
     }
     return (
