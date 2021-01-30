@@ -5,7 +5,6 @@ import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import './App.css';
 import config from '../config'
-// import STORE from '../dummy-store'
 // import BookshelfCategory from '../BookshelfCategory/BookshelfCategory'
 import AddBook from '../AddBook/AddBook'
 // import SearchBox from '../SearchBox/SearchBox'
@@ -21,6 +20,11 @@ class App extends Component {
     subcategories: [],
     catsandsubcats:  []
   }
+
+  // constructor() {
+  //   super();
+  //   this.addBook = this.addBook.bind(this); //added for troubleshooting didn't fix issue
+  // }
 
   async componentDidMount() {
     let booksRes = await fetch(config.API_ENDPOINT + 'books', 
@@ -50,17 +54,34 @@ class App extends Component {
     }
   })
     let subcategories = await subcategoriesRes.json()
-    let catsAndSubcatsRes = await fetch(config.API_ENDPOINT + 'catsandsubcats', 
-    {
-    method: 'GET',
-    headers: {
-      'content-type': 'application/json',
-      'Authorization': `Bearer ${config.API_KEY}`
-    }
-  })
-    let catsandsubcats = await catsAndSubcatsRes.json()
-    this.setState({books, categories, subcategories, catsandsubcats})
+  //   let catsAndSubcatsRes = await fetch(config.API_ENDPOINT + 'catsandsubcats', 
+  //   {
+  //   method: 'GET',
+  //   headers: {
+  //     'content-type': 'application/json',
+  //     'Authorization': `Bearer ${config.API_KEY}`
+  //   }
+  // })
+  //   let catsandsubcats = await catsAndSubcatsRes.json()
+    this.setState({books, categories, subcategories})
   }
+
+  // addBook = (book, category, subcategory) => {
+  //   this.setState({
+  //     books: [
+  //       ...this.state.books,
+  //       book
+  //     ],
+  //     categories: [
+  //       ...this.state.categories,
+  //       category
+  //     ],
+  //     subcategories: [
+  //       ...this.state.subcategories,
+  //       subcategory
+  //     ],
+  //   })
+  // }
 
   render() {
     console.log(this.state)
@@ -68,7 +89,8 @@ class App extends Component {
       books: this.state.books,
       categories: this.state.categories,
       subcategories: this.state.subcategories,
-      catsandsubcats: this.state.catsandsubcats
+      catsandsubcats: this.state.catsandsubcats,
+      addBook: this.state.addBook
     }
     return (
       <AppContext.Provider value={value}>

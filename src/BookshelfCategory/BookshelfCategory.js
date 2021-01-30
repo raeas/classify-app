@@ -9,7 +9,7 @@ function BookshelfCategory(props) {
   // const categories = STORE.categories
   // const subcategories = STORE.subcategories
   return (
-    <div className='Bookshelf__catetory'>
+    <div className='Bookshelf__category'>
       <h2>BookshelfCategory Component</h2>
       {
         books.map(book => (

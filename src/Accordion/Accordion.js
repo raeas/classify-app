@@ -1,13 +1,10 @@
 import React from "react";
 import './Accordion.css';
-// import STORE from '../dummy-store'
 import AppContext from '../AppContext'
 
 class Accordion extends React.Component {
 
   static contextType = AppContext
-
-  const 
 
     static defaultProps = {
         categories: [],
@@ -18,7 +15,7 @@ class Accordion extends React.Component {
         activeCategoryIndex: null,
         categories: this.context.categories,
         subcategories: this.context.subcategories,
-        catsandsubcats: this.context.catsandsubcats,
+        // catsandsubcats: this.context.catsandsubcats,
         subcategory: ''
     }
 
@@ -27,9 +24,14 @@ class Accordion extends React.Component {
         this.props.addCategory(categoryIndex)       
     }
 
-    handleAddsubcategory = (e) => {
+    handleAddSubcategory = (e) => {
       this.props.addSubcategory(e.target.value)       
   }
+
+  // //   //added for troubleshooting - no fix
+  //   handleAddCategory = (category) => {
+  //     this.props.addCategory(category)       
+  // }
 
     renderCategory(category, index, activeCategoryIndex) {
         return (
@@ -45,17 +47,17 @@ class Accordion extends React.Component {
     renderSubcategories(category) {
       return (
             this.state.subcategories.map(subcategory => {
-              console.log('subcats.cat ', subcategory.category)
-              console.log('cat ', category)
+              // console.log('subcats.cat ', subcategory.category)
+              // console.log('cat ', category)
               if (subcategory.category === category.id) {
                 return <li className='Subcat' key={subcategory.id}>
                   <label>
                     <input
                       type='radio'
                       className='subcategory_option' 
-                      name='subcatetory' 
-                      value={subcategory.name}
-                      onChange={(e) => this.handleAddsubcategory(e)}
+                      name='subcategory' 
+                      value={subcategory.id}
+                      onChange={(e) => this.handleAddSubcategory(e)}
                     />
                   {subcategory.name}
                   </label>
