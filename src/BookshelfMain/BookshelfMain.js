@@ -8,10 +8,10 @@ import AppContext from '../AppContext'
 function BookshelfMain(props) {
 
   const context = useContext(AppContext)
-  console.log('context ', context.bookshelf)
+  // console.log('context ', context.bookshelf)
 
   // console.log('store ', STORE)
-  console.log('props ', props)
+  // console.log('props ', props)
   const bookshelf = context.bookshelf
 
   return (
@@ -24,6 +24,7 @@ function BookshelfMain(props) {
               <p>Title: {bookshelf.title}</p>
               <p>Author Last Name: {bookshelf.author_last}</p>
               <p>Author First Name: {bookshelf.author_first}</p>
+              <p>Description: {bookshelf.description}</p>
               <p>Category: {bookshelf.category}</p>
               <p>Subcategory: {bookshelf.subcategory}</p>
               <button>Update</button>
