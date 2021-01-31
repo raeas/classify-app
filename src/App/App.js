@@ -7,6 +7,7 @@ import './App.css';
 import config from '../config'
 // import BookshelfCategory from '../BookshelfCategory/BookshelfCategory'
 import AddBook from '../AddBook/AddBook'
+import UpdateBook from '../UpdateBook/UpdateBook'
 // import SearchBox from '../SearchBox/SearchBox'
 import Nav from '../Nav/Nav'
 import About from '../About/About'
@@ -83,6 +84,15 @@ class App extends Component {
   //   })
   // }
 
+  updateBook = updatedBook => {
+    console.log(updatedBook)
+    this.setState({
+      books: this.state.books.map(book => book.id === updatedBook.id ? updatedBook : book)
+    }, console.log(this.state.books))
+  }
+
+ 
+
   render() {
     console.log(this.state)
     const value = {
@@ -90,7 +100,9 @@ class App extends Component {
       categories: this.state.categories,
       subcategories: this.state.subcategories,
       bookshelf: this.state.bookshelf,
-      addBook: this.state.addBook
+      addBook: this.state.addBook,
+      //1 add update method to context
+      updateBook: this.updateBook
     }
     return (
       <AppContext.Provider value={value}>
@@ -106,6 +118,8 @@ class App extends Component {
             <Route path='/about' component={About} />
             <Route path='/bookshelf' component={BookshelfMain} />
             <Route path='/add-book' component={AddBook} />
+            {/* 2. add route for editing item  inside other components, use Link comp to link to this route (Bookshelf where Edit button is) */}
+            <Route path='/edit-book/:bookId' component={UpdateBook} /> 
           </main>
           <Footer />
         </div>
