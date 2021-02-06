@@ -19,13 +19,9 @@ class App extends Component {
     books: [],
     categories: [],
     subcategories: [],
-    bookshelf:  []
+    bookshelf:  [],
+    // newBookshelf: [] //needed to refresh bookshelf on add and deletes.
   }
-
-  // constructor() {
-  //   super();
-  //   this.addBook = this.addBook.bind(this); //added for troubleshooting didn't fix issue
-  // }
 
   async componentDidMount() {
     let booksRes = await fetch(config.API_ENDPOINT + 'books', 
@@ -67,42 +63,43 @@ class App extends Component {
     this.setState({books, categories, subcategories, bookshelf})
   }
 
-  // addBook = (book, category, subcategory) => {
-  //   this.setState({
-  //     books: [
-  //       ...this.state.books,
-  //       book
-  //     ],
-  //     categories: [
-  //       ...this.state.categories,
-  //       category
-  //     ],
-  //     subcategories: [
-  //       ...this.state.subcategories,
-  //       subcategory
-  //     ],
-  //   })
-  // }
-
-  updateBook = updatedBook => {
-    console.log(updatedBook)
+  addBook = (book) => {
     this.setState({
-      books: this.state.books.map(book => book.id === updatedBook.id ? updatedBook : book)
-    }, console.log(this.state.books))
+      books: [
+        ...this.state.books,
+        book
+      ]
+    })
   }
 
- 
+  updateBook = bookId => {
+    const newBookshelf = this.state.bookshelf.filter(book => 
+      book.id !== bookId
+      )
+    this.setState({
+      bookshelf: newBookshelf
+    })
+  }
+
+  onDeleteBook = bookId => {
+    const newBookshelf = this.state.bookshelf.filter(book =>
+      book.id !== bookId
+    )
+    this.setState({
+      bookshelf: newBookshelf
+    })
+  }
 
   render() {
-    console.log(this.state)
     const value = {
       books: this.state.books,
       categories: this.state.categories,
       subcategories: this.state.subcategories,
       bookshelf: this.state.bookshelf,
-      addBook: this.state.addBook,
+      addBook: this.addBook,
       //1 add update method to context
-      updateBook: this.updateBook
+      updateBook: this.updateBook,
+      onDeleteBook: this.onDeleteBook
     }
     return (
       <AppContext.Provider value={value}>
@@ -119,7 +116,7 @@ class App extends Component {
             <Route path='/bookshelf' component={BookshelfMain} />
             <Route path='/add-book' component={AddBook} />
             {/* 2. add route for editing item  inside other components, use Link comp to link to this route (Bookshelf where Edit button is) */}
-            <Route path='/edit-book/:bookId' component={UpdateBook} /> 
+            <Route path='/update-book/:bookId' component={UpdateBook} /> 
           </main>
           <Footer />
         </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import './Footer.css';
 
 
-function Header() {
+function Footer() {
   return (
     <footer className='App__footer'>
       <h2>Dewey Classify App Footer</h2>
@@ -10,4 +10,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Footer;

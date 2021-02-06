@@ -3,15 +3,32 @@ import './BookItem.css';
 import AppContext from '../AppContext'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react';
+import config from '../config';
 
 function BookItem() {
+
   const context = useContext(AppContext)
-  const bookshelf = context.bookshelf
-  const book = context.books
+
+  function deleteBook(bookId) {
+    fetch(config.API_ENDPOINT + `books/${bookId}`, {
+      method: 'DELETE',
+      headers: {
+        'authorization': `bearer ${config.API_KEY}`
+      },
+      body: JSON.stringify(bookId),
+    })
+    .then(res => {
+      if (!res.ok)
+        return res.json().then(e => Promise.reject(e))
+    })
+    .catch(error => {
+      console.error(error)
+    })
+  }
   return (
     <div className='BookItem'>
       {
-          context.bookshelf.map(book => ( 
+          context.books.map(book => ( 
             <li key={book.id} style={{listStyle:'none'}}>
               <p>Title: {book.title}</p>
               <p>Author Last Name: {book.author_last}</p>
@@ -20,8 +37,11 @@ function BookItem() {
               <p>Category: {book.category}</p>
               <p>Subcategory: {book.subcategory}</p>
               {/* Link to updateBook form */}
-              <button><Link to={`/edit-book/${book.id}`}>Update Book</Link></button>
-              <button>Delete Book</button>
+              <button><Link to={`/update-book/${book.id}`}>Update Book</Link></button>
+              <button onClick={() => {
+                deleteBook(book.id)
+                context.onDeleteBook(book.id)
+              }}>Delete Book</button>
               <hr />
             </li>
           )

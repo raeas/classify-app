@@ -8,17 +8,13 @@ import AppContext from '../AppContext';
 
 class UpdateBook extends Component {
 
-  static propTypes = {
-
-  }
-
   static contextType = AppContext
 
   state = {
-      id: '',
+      book_id: '',
       title: '',
-      authorFirst: '',
-      authorLast: '',
+      author_first: '',
+      author_last: '',
       description: '',
       category_id: '',
       subcategory_id: ''
@@ -26,49 +22,36 @@ class UpdateBook extends Component {
 
   componentDidMount() {
     const { bookId } = this.props.match.params
-    console.log(bookId)
-    fetch(config.API_ENDPOINT + 'books/' + `${bookId}`, {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/json',
-        'Authorization': `Bearer ${config.API_KEY}`
-      }, 
-      // body: JSON.stringify(book),
+    let book = this.context.books.find(book => book.id === parseInt(bookId)) || {book_id: '', title: '', author_first: '', author_last: '', description: '', category_id: '', subcategory_id: ''}
+    this.setState({
+      book_id: book.id,
+      title: book.title,
+      author_first: book.author_first,
+      author_last: book.author_last,
+      description: book.description,
+      category_id: book.category_id,
+      subcategory_id: book.subcategory_id
     })
-      .then(res => {
-        if (!res.ok)
-          return res.json().then(e => Promise.reject(e))
-        return res.json()
-      })
-      .then(responseData => {
-        this.setState({
-          id: responseData.id,
-          title: responseData.title,
-          authorFirst: responseData.author_first,
-          authorLast: responseData.author_last,
-          description: responseData.description,
-          category_id: responseData.category_id,
-          subcategory_id: responseData.subcategory_id
-        })
-      })
-      .catch(error => {
-        console.log({error})
-      })
+  }
 
+  handleChange = e => {
+    this.setState({[e.target.name]:e.target.value})
   }
 
   handleSubmit = (e) => {
     e.preventDefault()
+    const { bookId } = this.props.match.params
     const updatedBook = {
-      title: e.target['title'].value,
-      author_first: e.target['author-first'].value,
-      author_last: e.target['author-last'].value,
-      description: e.target['title'].value,
-      category_id:  this.state.category,
-      subcategory_id: this.state.subcategory
+      title: this.state.title,
+      author_first: this.state.author_first,
+      author_last: this.state.author_last,
+      description: this.state.description,
+      category_id:  this.state.category_id,
+      subcategory_id: this.state.subcategory_id,
+      book_id: parseInt(bookId)
     }
 
-    fetch(config.API_ENDPOINT + 'books/' + `${this.context.books.id}`, {
+    fetch(config.API_ENDPOINT + `books/${bookId}`, {
       method: 'PATCH',
       headers: {
         'content-type': 'application/json',
@@ -76,47 +59,43 @@ class UpdateBook extends Component {
       }, 
       body: JSON.stringify(updatedBook),
     })
-      .then(res => {
-        if (!res.ok)
-          return res.json().then(e => Promise.reject(e))
-        return res.json()
-      })
-      .then(book => {
-        this.props.history.push(`/`)
+      .then(updatedBook => {
+        this.context.addBook(updatedBook)
+        this.props.history.push(`/bookshelf`)
       })
       .catch(error => {
         console.log({error})
       })
-    // this.props.history.push('/bookshelf')
   }
 
-  addCategory = (category) => {
-    console.log('category ', category)
-    this.setState({category:category})
+  addCategory = (category_id) => {
+    console.log('category ', category_id)
+    this.setState({category_id:category_id})
   }
 
-  addSubcategory = (subcategory) => {
-    console.log('subcategory ', subcategory)
-    this.setState({subcategory})
+  addSubcategory = (subcategory_id) => {
+    console.log('subcategory ', subcategory_id)
+    this.setState({subcategory_id:subcategory_id})
   }
 
   render() {
-    const { title, authorFirst, authorLast, description, category, subcategory} = this.state
+    // const { title, author_first, author_last, description, category, subcategory} = this.state
     return (
-      <div className='EditBookForm'>
-        <h2>Edit Book</h2>
+      <div className='UpdateBookForm'>
+        <h2>Update Book</h2>
           <form onSubmit={this.handleSubmit}>
             <div className='field'>
               <label htmlFor='title-input'>
                 Title:
               </label>
               <input
-                value={title}
                 type='text'
                 name='title'
                 id='title-input'
                 aria-label='Title of book'
                 aria-required='true'
+                value={this.state.title}
+                onChange = {this.handleChange}
                 />
             </div>
             <div className='field'>
@@ -124,12 +103,13 @@ class UpdateBook extends Component {
                 Author First Name:
               </label>
               <input
-                value={authorFirst}
                 type='text'
-                name='author-first'
+                name='author_first'
                 id='author-first-name-input'
                 aria-label='first name of the author'
                 aria-required='false'
+                value={this.state.author_first}
+                onChange = {this.handleChange}
               />
             </div>
             <div className='field'>
@@ -137,25 +117,27 @@ class UpdateBook extends Component {
                 Author Last Name:
               </label>
               <input
-                value={authorLast}
                 type='text'
-                name='author-last'
+                name='author_last'
                 id='author-last-name-input'
                 aria-label='Last name of the author'
                 aria-required='false'
+                value={this.state.author_last}
+                onChange = {this.handleChange}
               />
             </div>
             <div className='field'>
               <label htmlFor='book-description'> 
                 Description:
               </label>
-              <input
-                value={description}              
+              <input        
                 type='text'
                 name='description'
                 id='book-description'
                 aria-label='Description of book'
                 aria-required='false'
+                value={this.state.description}                      
+                onChange = {this.handleChange}
               />
                 <Accordion 
                   addCategory={this.addCategory} 

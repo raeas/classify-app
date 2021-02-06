@@ -12,12 +12,13 @@ class AddBook extends Component {
     super(props);
     this.state = {
       title: '',
-      authorFirst: '',
-      authorLast: '',
+      author_first: '',
+      author_last: '',
       description: '',
-      categoryId: '',
-      category: '',
-      subcategoryId: ''
+      category_id: '',
+      // category: '',
+      subcategory_id: '',
+      // subcategory: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addCategory = this.addCategory.bind(this)
@@ -26,51 +27,53 @@ class AddBook extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    const newBook = {
+    const book = {
       title: e.target['title'].value,
-      author_first: e.target['author-first'].value,
-      author_last: e.target['author-last'].value,
+      author_first: e.target['author_first'].value,
+      author_last: e.target['author_last'].value,
       description: e.target['description'].value,
-      category_id:  this.state.category,
-      subcategory_id: this.state.subcategory
+      category_id:  this.state.category_id,
+      subcategory_id: this.state.subcategory_id
     }
-    //this will be a POST not setState() using API
-    // this.setState()
     fetch(config.API_ENDPOINT + 'books', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
         'Authorization': `Bearer ${config.API_KEY}`
       }, 
-      body: JSON.stringify(newBook),
+      body: JSON.stringify(book),
     })
       .then(res => {
         if (!res.ok)
-          return res.json().then(e => Promise.reject(e))
-        return res.json()
+          return res.json().then(error => {
+            throw error
+          })
+          return res.json()
       })
+      // What is this doing... how so I get it to refresh the bookshelf???
       .then(book => {
-        // this.context.addBook(book)
+        console.log('Add book ', book)
+        // book.title = '',
+        this.context.addBook(book)
         this.props.history.push(`/bookshelf`)
       })
       .catch(error => {
         console.log({error})
       })
-    // this.props.history.push('/bookshelf')
+    this.props.history.push('/bookshelf')
   }
 
-  addCategory = (category) => {
-    console.log('category ', category)
-    this.setState({category:category})
+  addCategory = (category_id) => {
+    console.log('category ', category_id)
+    this.setState({category_id})
   }
 
-  addSubcategory = (subcategory) => {
-    console.log('subcategory ', subcategory)
-    this.setState({subcategory})
+  addSubcategory = (subcategory_id) => {
+    console.log('subcategory ', subcategory_id)
+    this.setState({subcategory_id})
   }
 
   render() {
-    console.log('state from AddBook comp: ', this.state)
     return (
       <div className='AddBookForm'>
         <h2>Add a Book</h2>
@@ -93,7 +96,7 @@ class AddBook extends Component {
               </label>
               <input
                 type='text'
-                name='author-first'
+                name='author_first'
                 id='author-first-name-input'
                 aria-label='first name of the author'
                 aria-required='false'
@@ -105,7 +108,7 @@ class AddBook extends Component {
               </label>
               <input
                 type='text'
-                name='author-last'
+                name='author_last'
                 id='author-last-name-input'
                 aria-label='Last name of the author'
                 aria-required='false'
