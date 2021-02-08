@@ -16,9 +16,7 @@ class AddBook extends Component {
       author_last: '',
       description: '',
       category_id: '',
-      // category: '',
-      subcategory_id: '',
-      // subcategory: ''
+      subcategory_id: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addCategory = this.addCategory.bind(this)
@@ -27,6 +25,7 @@ class AddBook extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
+    let bookshelf
     const book = {
       title: e.target['title'].value,
       author_first: e.target['author_first'].value,
@@ -48,20 +47,31 @@ class AddBook extends Component {
           return res.json().then(error => {
             throw error
           })
-          return res.json()
+      //     return res.json()
+      // })
+      fetch(config.API_ENDPOINT + `bookshelf`, { ///this fetch is nested inside other fetch
+        method: 'GET',
+        headers: {
+          'content-type': 'application/json',
+          'Authorization': `Bearer ${config.API_KEY}`
+        }, 
+        // body: JSON.stringify(bookshelf), //do not need for a get
       })
-      // What is this doing... how so I get it to refresh the bookshelf???
-      .then(book => {
-        console.log('Add book ', book)
-        // book.title = '',
-        this.context.addBook(book)
+      .then(bookshelfRes => {
+        bookshelfRes.json()
+        .then(bookshelf => {
+          console.log('Add book ', bookshelf)
+          this.context.addBook(bookshelf)
+        })
+
         this.props.history.push(`/bookshelf`)
       })
+    })
       .catch(error => {
         console.log({error})
       })
-    this.props.history.push('/bookshelf')
   }
+  
 
   addCategory = (category_id) => {
     console.log('category ', category_id)
@@ -135,6 +145,5 @@ class AddBook extends Component {
     )
   }
 }
-
 
 export default AddBook;

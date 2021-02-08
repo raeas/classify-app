@@ -41,14 +41,14 @@ class UpdateBook extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     const { bookId } = this.props.match.params
-    const updatedBook = {
+    const book = {
       title: this.state.title,
       author_first: this.state.author_first,
       author_last: this.state.author_last,
       description: this.state.description,
       category_id:  this.state.category_id,
       subcategory_id: this.state.subcategory_id,
-      book_id: parseInt(bookId)
+      // book_id: parseInt(bookId)
     }
 
     fetch(config.API_ENDPOINT + `books/${bookId}`, {
@@ -57,12 +57,31 @@ class UpdateBook extends Component {
         'content-type': 'application/json',
         'Authorization': `Bearer ${config.API_KEY}`
       }, 
-      body: JSON.stringify(updatedBook),
+      body: JSON.stringify(book),
     })
-      .then(updatedBook => {
-        this.context.addBook(updatedBook)
+    .then(res => {
+      if(!res.ok)
+      return res.json().then(error => {
+        throw error
+      })
+      fetch(config.API_ENDPOINT + `bookshelf`, {
+        method: 'GET',
+        headers: {
+          'content-type': 'application/json',
+          'Authorization': `Bearer ${config.API_KEY}`
+        },
+      })
+      .then(bookshelfRes => {
+        bookshelfRes.json()
+        .then(bookshelf => {
+          console.log('Update book ', bookshelf)
+          this.context.addBook(bookshelf)
+        })
+        // book.id = parseInt(bookId)
+        // this.context.updateBook(book)
         this.props.history.push(`/bookshelf`)
       })
+    })
       .catch(error => {
         console.log({error})
       })
@@ -70,16 +89,15 @@ class UpdateBook extends Component {
 
   addCategory = (category_id) => {
     console.log('category ', category_id)
-    this.setState({category_id:category_id})
+    this.setState({category_id})
   }
 
   addSubcategory = (subcategory_id) => {
     console.log('subcategory ', subcategory_id)
-    this.setState({subcategory_id:subcategory_id})
+    this.setState({subcategory_id})
   }
 
   render() {
-    // const { title, author_first, author_last, description, category, subcategory} = this.state
     return (
       <div className='UpdateBookForm'>
         <h2>Update Book</h2>

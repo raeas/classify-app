@@ -20,7 +20,7 @@ class App extends Component {
     categories: [],
     subcategories: [],
     bookshelf:  [],
-    // newBookshelf: [] //needed to refresh bookshelf on add and deletes.
+    newBookshelf: [] //needed to refresh bookshelf on add and deletes.
   }
 
   async componentDidMount() {
@@ -63,23 +63,20 @@ class App extends Component {
     this.setState({books, categories, subcategories, bookshelf})
   }
 
-  addBook = (book) => {
-    this.setState({
-      books: [
-        ...this.state.books,
-        book
-      ]
-    })
-  }
-
-  updateBook = bookId => {
-    const newBookshelf = this.state.bookshelf.filter(book => 
-      book.id !== bookId
-      )
+  addBook = (newBookshelf) => {
     this.setState({
       bookshelf: newBookshelf
-    })
+    }, () => console.log('add book set state ', this.state.books))
   }
+
+  // updateBook = (updatedBook) => {
+  //   const newBookshelf = this.state.bookshelf.filter(book => 
+  //     book.id !== updatedBook.id
+  //     )
+  //   this.setState({
+  //     bookshelf: [...newBookshelf, updatedBook]
+  //   }, ( )=> console.log('updateBook ', this.state.bookshelf))
+  // }
 
   onDeleteBook = bookId => {
     const newBookshelf = this.state.bookshelf.filter(book =>

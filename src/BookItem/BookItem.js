@@ -28,7 +28,7 @@ function BookItem() {
   return (
     <div className='BookItem'>
       {
-          context.books.map(book => ( 
+          context.bookshelf.map(book => ( 
             <li key={book.id} style={{listStyle:'none'}}>
               <p>Title: {book.title}</p>
               <p>Author Last Name: {book.author_last}</p>
