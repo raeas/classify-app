@@ -4,13 +4,14 @@ import AppContext from '../AppContext'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react';
 import config from '../config';
+const {API_BASE_URL} = require('../config');
 
 function BookItem() {
 
   const context = useContext(AppContext)
 
   function deleteBook(bookId) {
-    fetch(config.API_ENDPOINT + `books/${bookId}`, {
+    fetch(`${config.API_BASE_URL}/books/${bookId}`, {
       method: 'DELETE',
       headers: {
         'authorization': `bearer ${config.API_KEY}`

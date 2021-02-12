@@ -3,7 +3,7 @@ import Accordion from '../Accordion/Accordion'
 import './UpdateBook.css';
 import config from '../config';
 import AppContext from '../AppContext';
-// const {API_BASE_URL} = require('./config');
+const {API_BASE_URL} = require('../config');
 
 //"Make a component containing a form for editing the item"
 
@@ -52,7 +52,7 @@ class UpdateBook extends Component {
       // book_id: parseInt(bookId)
     }
 
-    fetch(config.API_BASE_URL + `books/${bookId}`, {
+    fetch(`${config.API_BASE_URL}/books/${bookId}`, {
       method: 'PATCH',
       headers: {
         'content-type': 'application/json',
@@ -65,7 +65,7 @@ class UpdateBook extends Component {
       return res.json().then(error => {
         throw error
       })
-      fetch(config.API_BASE_URL + `bookshelf`, {
+      fetch(`${config.API_BASE_URL}/bookshelf`, {
         method: 'GET',
         headers: {
           'content-type': 'application/json',

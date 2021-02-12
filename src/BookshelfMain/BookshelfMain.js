@@ -12,25 +12,6 @@ class BookshelfMain extends Component {
     books: this.context.books
 }
 
-
-// componentDidMount() {
-//   console.log(this.state.bookshelf)
-//   const { bookId } = this.props.match.params
-//   let bookshelf = this.context.bookshelf.find(book => book.id === parseInt(bookId)) || {book_id: '', title: '', author_first: '', author_last: '', description: '', category_id: '', subcategory_id: ''}
-//   console.log('compDidMount ', bookshelf)
-//   this.setState({
-//     bookshelf: bookshelf
-//     // book_id: book.id,
-//     // title: book.title,
-//     // author_first: book.author_first,
-//     // author_last: book.author_last,
-//     // description: book.description,
-//     // category_id: book.category_id,
-//     // subcategory_id: book.subcategory_id
-//   })
-// }
-
-
   render() {
     return (
       <>

@@ -5,14 +5,13 @@ import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import './App.css';
 import config from '../config'
-// import BookshelfCategory from '../BookshelfCategory/BookshelfCategory'
 import AddBook from '../AddBook/AddBook'
 import UpdateBook from '../UpdateBook/UpdateBook'
-// import SearchBox from '../SearchBox/SearchBox'
 import Nav from '../Nav/Nav'
 import About from '../About/About'
 import Home from '../Home/Home'
 import AppContext from '../AppContext'
+// const {API_BASE_URL} = require('../config');
 
 class App extends Component {
   state = {
@@ -24,7 +23,7 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    let booksRes = await fetch(config.API_ENDPOINT + 'books', 
+    let booksRes = await fetch(`${config.API_BASE_URL}/books`, 
       {
       method: 'GET',
       headers: {
@@ -33,7 +32,7 @@ class App extends Component {
       }
     })
     let books = await booksRes.json()
-    let categoriesRes = await fetch(config.API_ENDPOINT + 'categories', 
+    let categoriesRes = await fetch(`${config.API_BASE_URL}/categories`, 
       {
       method: 'GET',
       headers: {
@@ -42,7 +41,7 @@ class App extends Component {
       }
     })
     let categories = await categoriesRes.json()
-    let subcategoriesRes = await fetch(config.API_ENDPOINT + 'subcategories', 
+    let subcategoriesRes = await fetch(`${config.API_BASE_URL}/subcategories`, 
     {
     method: 'GET',
     headers: {
@@ -51,7 +50,7 @@ class App extends Component {
     }
   })
     let subcategories = await subcategoriesRes.json()
-    let bookshelfRes = await fetch(config.API_ENDPOINT + 'bookshelf', 
+    let bookshelfRes = await fetch(`${config.API_BASE_URL}/bookshelf`, 
     {
     method: 'GET',
     headers: {
@@ -88,6 +87,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(`${config.API_KEY}`)
     const value = {
       books: this.state.books,
       categories: this.state.categories,
