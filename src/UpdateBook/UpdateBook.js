@@ -52,7 +52,8 @@ class UpdateBook extends Component {
       // book_id: parseInt(bookId)
     }
 
-    fetch(`${config.API_BASE_URL}/books/${bookId}`, {
+    // fetch(`${config.API_BASE_URL}/books/${bookId}`, {
+    fetch(`https://rocky-reaches-94023.herokuapp.com/api/books/${bookId}`, {
       method: 'PATCH',
       headers: {
         'content-type': 'application/json',
@@ -65,7 +66,8 @@ class UpdateBook extends Component {
       return res.json().then(error => {
         throw error
       })
-      fetch(`${config.API_BASE_URL}/bookshelf`, {
+      // fetch(`${config.API_BASE_URL}/bookshelf`, {
+      fetch(`https://rocky-reaches-94023.herokuapp.com/api/bookshelf`, {
         method: 'GET',
         headers: {
           'content-type': 'application/json',

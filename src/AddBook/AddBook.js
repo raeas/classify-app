@@ -35,7 +35,8 @@ class AddBook extends Component {
       category_id: this.state.category_id,
       subcategory_id: this.state.subcategory_id
     }
-    fetch(`${config.API_BASE_URL}/books`, {
+    // fetch(`${config.API_BASE_URL}/books`, {
+    fetch(`https://rocky-reaches-94023.herokuapp.com/api/books`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -50,7 +51,8 @@ class AddBook extends Component {
           })
         //     return res.json()
         // })
-        fetch(`${config.API_BASE_URL}/bookshelf`, { ///this fetch is nested inside other fetch
+        // fetch(`${config.API_BASE_URL}/bookshelf`, { ///this fetch is nested inside other fetch
+        fetch(`https://rocky-reaches-94023.herokuapp.com/api/bookshelf`, {  
           method: 'GET',
           headers: {
             'content-type': 'application/json',
