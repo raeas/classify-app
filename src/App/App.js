@@ -11,7 +11,7 @@ import Nav from '../Nav/Nav'
 import About from '../About/About'
 import Home from '../Home/Home'
 import AppContext from '../AppContext'
-// const {API_BASE_URL} = require('../config');
+const {API_BASE_URL} = require('../config');
 
 class App extends Component {
   state = {
@@ -24,6 +24,7 @@ class App extends Component {
 
   async componentDidMount() {
     let booksRes = await fetch(`${config.API_BASE_URL}/books`, 
+    // let booksRes = await fetch(`https://rocky-reaches-94023.herokuapp.com/api/books`,
       {
       method: 'GET',
       headers: {
@@ -33,6 +34,7 @@ class App extends Component {
     })
     let books = await booksRes.json()
     let categoriesRes = await fetch(`${config.API_BASE_URL}/categories`, 
+    // let categoriesRes = await fetch(`https://rocky-reaches-94023.herokuapp.com/api/categories`, 
       {
       method: 'GET',
       headers: {
@@ -42,6 +44,7 @@ class App extends Component {
     })
     let categories = await categoriesRes.json()
     let subcategoriesRes = await fetch(`${config.API_BASE_URL}/subcategories`, 
+    // let subcategoriesRes = await fetch(`https://rocky-reaches-94023.herokuapp.com/api/subcategories`, 
     {
     method: 'GET',
     headers: {
@@ -50,7 +53,8 @@ class App extends Component {
     }
   })
     let subcategories = await subcategoriesRes.json()
-    let bookshelfRes = await fetch(`${config.API_BASE_URL}/bookshelf`, 
+    let bookshelfRes = await fetch(`${config.API_BASE_URL}/bookshelf`,
+    // let bookshelfRes = await fetch(`https://rocky-reaches-94023.herokuapp.com/api/bookshelf`, 
     {
     method: 'GET',
     headers: {
