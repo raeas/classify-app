@@ -23,7 +23,8 @@ class UpdateBook extends Component {
 
   componentDidMount() {
     const { bookId } = this.props.match.params
-    let book = this.context.books.find(book => book.id === parseInt(bookId)) || {book_id: '', title: '', author_first: '', author_last: '', description: '', category_id: '', subcategory_id: ''}
+    let book = this.context.bookshelf.find(book => book.id === parseInt(bookId)) // || {book_id: '', title: '', author_first: '', author_last: '', description: '', category_id: '', subcategory_id: ''}
+    console.log(book)
     this.setState({
       book_id: book.id,
       title: book.title,
