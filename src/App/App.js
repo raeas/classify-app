@@ -11,7 +11,6 @@ import Nav from '../Nav/Nav'
 import About from '../About/About'
 import Home from '../Home/Home'
 import AppContext from '../AppContext'
-const {API_BASE_URL} = require('../config');
 
 class App extends Component {
   state = {

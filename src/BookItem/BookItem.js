@@ -4,7 +4,6 @@ import AppContext from '../AppContext'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react';
 import config from '../config';
-const {API_BASE_URL} = require('../config');
 
 function BookItem() {
 

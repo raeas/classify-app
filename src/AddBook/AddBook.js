@@ -3,7 +3,6 @@ import Accordion from '../Accordion/Accordion'
 import './AddBook.css';
 import config from '../config'
 import AppContext from '../AppContext'
-const { API_BASE_URL } = require('../config');
 
 class AddBook extends Component {
 

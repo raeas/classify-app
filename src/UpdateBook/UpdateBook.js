@@ -3,7 +3,6 @@ import Accordion from '../Accordion/Accordion'
 import './UpdateBook.css';
 import config from '../config';
 import AppContext from '../AppContext';
-const {API_BASE_URL} = require('../config');
 
 //"Make a component containing a form for editing the item"
 
