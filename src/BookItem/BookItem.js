@@ -11,8 +11,8 @@ function BookItem() {
   const context = useContext(AppContext)
 
   function deleteBook(bookId) {
-    // fetch(`${config.API_BASE_URL}/books/${bookId}`, {
-    fetch(`https://rocky-reaches-94023.herokuapp.com/api/books/${bookId}`, {
+    fetch(`${config.API_BASE_URL}/books/${bookId}`, {
+    // fetch(`https://rocky-reaches-94023.herokuapp.com/api/books/${bookId}`, {
       method: 'DELETE',
       headers: {
         'authorization': `bearer ${config.API_KEY}`

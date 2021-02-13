@@ -23,8 +23,8 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    // let booksRes = await fetch(`${config.API_BASE_URL}/books`, 
-    let booksRes = await fetch(`https://rocky-reaches-94023.herokuapp.com/api/books`,
+    let booksRes = await fetch(`${config.API_BASE_URL}/books`, 
+    // let booksRes = await fetch(`https://rocky-reaches-94023.herokuapp.com/api/books`,
       {
       method: 'GET',
       headers: {
@@ -33,8 +33,8 @@ class App extends Component {
       }
     })
     let books = await booksRes.json()
-    // let categoriesRes = await fetch(`${config.API_BASE_URL}/categories`, 
-    let categoriesRes = await fetch(`https://rocky-reaches-94023.herokuapp.com/api/categories`, 
+    let categoriesRes = await fetch(`${config.API_BASE_URL}/categories`, 
+    // let categoriesRes = await fetch(`https://rocky-reaches-94023.herokuapp.com/api/categories`, 
       {
       method: 'GET',
       headers: {
@@ -43,8 +43,8 @@ class App extends Component {
       }
     })
     let categories = await categoriesRes.json()
-    // let subcategoriesRes = await fetch(`${config.API_BASE_URL}/subcategories`, 
-    let subcategoriesRes = await fetch(`https://rocky-reaches-94023.herokuapp.com/api/subcategories`, 
+    let subcategoriesRes = await fetch(`${config.API_BASE_URL}/subcategories`, 
+    // let subcategoriesRes = await fetch(`https://rocky-reaches-94023.herokuapp.com/api/subcategories`, 
     {
     method: 'GET',
     headers: {
@@ -53,8 +53,8 @@ class App extends Component {
     }
   })
     let subcategories = await subcategoriesRes.json()
-    // let bookshelfRes = await fetch(`${config.API_BASE_URL}/bookshelf`,
-    let bookshelfRes = await fetch(`https://rocky-reaches-94023.herokuapp.com/api/bookshelf`, 
+    let bookshelfRes = await fetch(`${config.API_BASE_URL}/bookshelf`,
+    // let bookshelfRes = await fetch(`https://rocky-reaches-94023.herokuapp.com/api/bookshelf`, 
     {
     method: 'GET',
     headers: {
@@ -91,7 +91,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(`${config.API_KEY}`)
     const value = {
       books: this.state.books,
       categories: this.state.categories,
