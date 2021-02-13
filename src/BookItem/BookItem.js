@@ -32,8 +32,7 @@ function BookItem() {
           context.bookshelf.map(book => ( 
             <li key={book.id} style={{listStyle:'none'}}>
               <p>Title: {book.title}</p>
-              <p>Author Last Name: {book.author_last}</p>
-              <p>Author First Name: {book.author_first}</p>
+              <p>Author: {book.author_last}, {book.author_first}</p>
               <p>Description: {book.description}</p>
               <p>Category: {book.category}</p>
               <p>Subcategory: {book.subcategory}</p>
