@@ -3,6 +3,7 @@ import Accordion from '../Accordion/Accordion'
 import './UpdateBook.css';
 import config from '../config';
 import AppContext from '../AppContext';
+import { Link } from 'react-router-dom';
 
 //"Make a component containing a form for editing the item"
 
@@ -165,6 +166,7 @@ class UpdateBook extends Component {
               <input type="submit" value="Submit" />
             </div>
           </form>
+          <button><Link to='/bookshelf'>Cancel</Link></button>
       </div>
     )
   }

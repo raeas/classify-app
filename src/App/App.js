@@ -89,6 +89,10 @@ class App extends Component {
     })
   }
 
+  // handleCancelClick = () => {
+  //   this.setState(prevState)
+  // }
+
   render() {
     const value = {
       books: this.state.books,
@@ -98,7 +102,8 @@ class App extends Component {
       addBook: this.addBook,
       //1 add update method to context
       updateBook: this.updateBook,
-      onDeleteBook: this.onDeleteBook
+      onDeleteBook: this.onDeleteBook,
+      // handleCancelClick: this.handleCancelClick
     }
     return (
       <AppContext.Provider value={value}>

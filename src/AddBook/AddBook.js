@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Accordion from '../Accordion/Accordion'
 import './AddBook.css';
-import config from '../config'
-import AppContext from '../AppContext'
+import config from '../config';
+import AppContext from '../AppContext';
+import { Link } from 'react-router-dom';
 
 class AddBook extends Component {
 
@@ -18,9 +19,9 @@ class AddBook extends Component {
       category_id: '',
       subcategory_id: ''
     }
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.addCategory = this.addCategory.bind(this)
-    this.addSubcategory = this.addSubcategory.bind(this)
+    // this.handleSubmit = this.handleSubmit.bind(this);
+    // this.addCategory = this.addCategory.bind(this)
+    // this.addSubcategory = this.addSubcategory.bind(this)
   }
 
   handleSubmit = (e) => {
@@ -142,6 +143,7 @@ class AddBook extends Component {
             <input type="submit" value="Submit" />
           </div>
         </form>
+        <button><Link to='/'>Cancel</Link></button>
       </div>
     )
   }
