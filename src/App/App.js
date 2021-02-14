@@ -7,7 +7,6 @@ import './App.css';
 import config from '../config'
 import AddBook from '../AddBook/AddBook'
 import UpdateBook from '../UpdateBook/UpdateBook'
-import Nav from '../Nav/Nav'
 import About from '../About/About'
 import Home from '../Home/Home'
 import AppContext from '../AppContext'
@@ -108,12 +107,7 @@ class App extends Component {
     return (
       <AppContext.Provider value={value}>
         <div className='App'>
-          <nav>
-            <Nav />
-          </nav>
-          <header>
-            <Header />
-          </header>
+          <Header />
           <main>
             <Route exact path='/' component={Home} />
             <Route path='/about' component={About} />

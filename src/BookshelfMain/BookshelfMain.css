@@ -1,19 +1,5 @@
-.Bookshelf__main {
-  grid-area: main;
-  height: calc(100vh - 120px);
-  overflow: auto;
-  margin: 0;
-}
-
 .Bookshelf__main button {
-  background-color: #227c9d;
-  margin-left: 10px;
-}
-
-.Add__book button {
   background-color: #ff6f59;
-}
-
-.Bookshelf__main li {
-  text-align: center;
+  width: 65%;
+  display: inline;
 }

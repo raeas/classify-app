@@ -18,14 +18,11 @@ class BookshelfMain extends Component {
         <div className='Bookshelf__main'>
           <h2>Bookshelf</h2>
           <BookItem />
-        </div>
-        <div className='Add__book'> 
           <button><Link to='/add-book' className='text-link'>Add Book</Link></button>
         </div>
       </>
     );
   }
-
 }
 
 

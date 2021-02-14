@@ -1,5 +1,5 @@
 button {
-  width: 50%;
+  width: 100%;
   background-color: #ff6f59;
   color: #282c34;
   padding: 14px 20px;
@@ -12,4 +12,9 @@ button {
 .text-link {
   color: inherit;
   text-decoration: inherit;
+}
+
+.Home {
+  width: 65%;
+  display: inline-block;
 }

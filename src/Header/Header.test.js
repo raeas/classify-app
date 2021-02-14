@@ -7,13 +7,15 @@ import ReactDOM from 'react-dom';
 // make the App component available
 import Header from './Header';
 
+import { BrowserRouter } from 'react-router-dom';
+
 // this is the test case
 it('renders without crashing', () => {
   // first create a DOM element to render the component into
   const div = document.createElement('div');
 
   // render the component, this is the actual test, if something is wrong it will fail here
-  ReactDOM.render(<Header />, div);
+  ReactDOM.render(<BrowserRouter><Header /></BrowserRouter>, div);
 
   // clean up code
   ReactDOM.unmountComponentAtNode(div);

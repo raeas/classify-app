@@ -40,15 +40,15 @@ class Accordion extends React.Component {
               if (subcategory.category === category.id) {
                 return <li className='Subcat' key={subcategory.id}>
                   <label>
-                    <input
-                      type='radio'
-                      className='subcategory_option' 
-                      name='subcategory_id' 
-                      value={subcategory.id}
-                      onChange={(e) => this.handleAddSubcategory(e)}
-                    />
-                  {subcategory.name}
-                  </label>
+                      <input
+                        type='radio'
+                        className='subcategory_option' 
+                        name='subcategory_id' 
+                        value={subcategory.id}
+                        onChange={(e) => this.handleAddSubcategory(e)}
+                      />
+                    {subcategory.name}
+                    </label>
                 </li>
               }
               else {return ''}

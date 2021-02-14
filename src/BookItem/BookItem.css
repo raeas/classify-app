@@ -1,0 +1,16 @@
+
+.BookItem button {
+  background-color: #227c9d;
+  margin-left: 10px;
+}
+
+.BookItem li {
+  text-align: center;
+  list-style: none;
+  padding: 0 100px;
+}
+
+.BookItem button a {
+  text-decoration: none;
+  color: #282C34
+}

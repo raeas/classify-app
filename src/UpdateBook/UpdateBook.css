@@ -33,3 +33,8 @@ input[type=submit] {
   label {
     display: inline;
   }
+
+  .UpdateBookForm a {
+    text-decoration: none;
+    color: #282c34;
+  } 
