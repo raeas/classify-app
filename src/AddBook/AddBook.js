@@ -19,14 +19,10 @@ class AddBook extends Component {
       category_id: '',
       subcategory_id: ''
     }
-    // this.handleSubmit = this.handleSubmit.bind(this);
-    // this.addCategory = this.addCategory.bind(this)
-    // this.addSubcategory = this.addSubcategory.bind(this)
   }
 
   handleSubmit = (e) => {
     e.preventDefault()
-    // let bookshelf
     const book = {
       title: e.target['title'].value,
       author_first: e.target['author_first'].value,
@@ -36,7 +32,6 @@ class AddBook extends Component {
       subcategory_id: this.state.subcategory_id
     }
     fetch(`${config.API_BASE_URL}/books`, {
-    // fetch(`https://rocky-reaches-94023.herokuapp.com/api/books`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -49,16 +44,12 @@ class AddBook extends Component {
           return res.json().then(error => {
             throw error
           })
-        //     return res.json()
-        // })
-        fetch(`${config.API_BASE_URL}/bookshelf`, { ///this fetch is nested inside other fetch
-        // fetch(`https://rocky-reaches-94023.herokuapp.com/api/bookshelf`, {  
+        fetch(`${config.API_BASE_URL}/bookshelf`, { 
           method: 'GET',
           headers: {
             'content-type': 'application/json',
             'Authorization': `Bearer ${config.API_KEY}`
           },
-          // body: JSON.stringify(bookshelf), //do not need for a get
         })
           .then(bookshelfRes => {
             bookshelfRes.json()
@@ -73,7 +64,6 @@ class AddBook extends Component {
         console.log({ error })
       })
   }
-
 
   addCategory = (category_id) => {
     console.log('category ', category_id)

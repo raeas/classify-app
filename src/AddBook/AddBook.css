@@ -23,33 +23,23 @@ input[type=submit] {
   cursor: pointer;
 }
 
-  input[type=radio],
-  input.radio {
-    float: left;
-    clear: none;
-    margin: 2px 0 0 2px;
-  }
+input[type=radio],
+input.radio {
+  float: left;
+  clear: none;
+  margin: 2px 0 0 2px;
+}
 
-  label {
-    display: inline;
-  }
+label {
+  display: inline;
+}
 
-  .AddBookForm a {
-    text-decoration: none;
-    color: #282c34;
-  } 
+.AddBookForm a {
+  text-decoration: none;
+  color: #282c34;
+} 
 
-  /* .Add__book {
-    width: 65%;
-  } */
-
-  /* .Add__book button a {
-    text-decoration: none;
-    color: #282C34;
-    width: 65%;
-  } */
-
-  .text-link {
-    color: inherit;
-    text-decoration: inherit;
-  }
+.text-link {
+  color: inherit;
+  text-decoration: inherit;
+}

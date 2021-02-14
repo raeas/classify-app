@@ -25,6 +25,4 @@ class BookshelfMain extends Component {
   }
 }
 
-
-
 export default BookshelfMain;

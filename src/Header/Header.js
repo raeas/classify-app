@@ -2,7 +2,6 @@ import React from 'react';
 import './Header.css';
 import Nav from '../Nav/Nav'
 
-
 function Header() {
   return (
     <header className='App__header'>

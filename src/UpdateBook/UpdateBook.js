@@ -5,8 +5,6 @@ import config from '../config';
 import AppContext from '../AppContext';
 import { Link } from 'react-router-dom';
 
-//"Make a component containing a form for editing the item"
-
 class UpdateBook extends Component {
 
   static contextType = AppContext
@@ -50,11 +48,9 @@ class UpdateBook extends Component {
       description: this.state.description,
       category_id:  this.state.category_id,
       subcategory_id: this.state.subcategory_id,
-      // book_id: parseInt(bookId)
     }
 
     fetch(`${config.API_BASE_URL}/books/${bookId}`, {
-    // fetch(`https://rocky-reaches-94023.herokuapp.com/api/books/${bookId}`, {
       method: 'PATCH',
       headers: {
         'content-type': 'application/json',
@@ -68,7 +64,6 @@ class UpdateBook extends Component {
         throw error
       })
       fetch(`${config.API_BASE_URL}/bookshelf`, {
-      // fetch(`https://rocky-reaches-94023.herokuapp.com/api/bookshelf`, {
         method: 'GET',
         headers: {
           'content-type': 'application/json',
@@ -81,8 +76,6 @@ class UpdateBook extends Component {
           console.log('Update book ', bookshelf)
           this.context.addBook(bookshelf)
         })
-        // book.id = parseInt(bookId)
-        // this.context.updateBook(book)
         this.props.history.push(`/bookshelf`)
       })
     })

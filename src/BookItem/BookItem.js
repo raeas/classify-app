@@ -11,7 +11,6 @@ function BookItem() {
 
   function deleteBook(bookId) {
     fetch(`${config.API_BASE_URL}/books/${bookId}`, {
-    // fetch(`https://rocky-reaches-94023.herokuapp.com/api/books/${bookId}`, {
       method: 'DELETE',
       headers: {
         'authorization': `bearer ${config.API_KEY}`
@@ -36,7 +35,6 @@ function BookItem() {
               <p>Description: {book.description}</p>
               <p>Category: {book.category}</p>
               <p>Subcategory: {book.subcategory}</p>
-              {/* Link to updateBook form */}
               <button><Link to={`/update-book/${book.id}`}>Update Book</Link></button>
               <button onClick={() => {
                 deleteBook(book.id)
