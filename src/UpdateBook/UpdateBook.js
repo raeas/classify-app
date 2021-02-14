@@ -21,8 +21,7 @@ class UpdateBook extends Component {
 
   componentDidMount() {
     const { bookId } = this.props.match.params
-    let book = this.context.bookshelf.find(book => book.id === parseInt(bookId)) // || {book_id: '', title: '', author_first: '', author_last: '', description: '', category_id: '', subcategory_id: ''}
-    console.log('book ', book)
+    let book = this.context.bookshelf.find(book => book.id === parseInt(bookId)) || {book_id: '', title: '', author_first: '', author_last: '', description: '', category_id: '', subcategory_id: ''}
     this.setState({
       book_id: book.id,
       title: book.title,
@@ -73,7 +72,6 @@ class UpdateBook extends Component {
       .then(bookshelfRes => {
         bookshelfRes.json()
         .then(bookshelf => {
-          console.log('Update book ', bookshelf)
           this.context.addBook(bookshelf)
         })
         this.props.history.push(`/bookshelf`)
@@ -85,12 +83,10 @@ class UpdateBook extends Component {
   }
 
   addCategory = (category_id) => {
-    console.log('category ', category_id)
     this.setState({category_id})
   }
 
   addSubcategory = (subcategory_id) => {
-    console.log('subcategory ', subcategory_id)
     this.setState({subcategory_id})
   }
 

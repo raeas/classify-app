@@ -54,7 +54,6 @@ class AddBook extends Component {
           .then(bookshelfRes => {
             bookshelfRes.json()
               .then(bookshelf => {
-                console.log('Add book ', bookshelf)
                 this.context.addBook(bookshelf)
               })
             this.props.history.push(`/bookshelf`)
@@ -66,12 +65,10 @@ class AddBook extends Component {
   }
 
   addCategory = (category_id) => {
-    console.log('category ', category_id)
     this.setState({ category_id })
   }
 
   addSubcategory = (subcategory_id) => {
-    console.log('subcategory ', subcategory_id)
     this.setState({ subcategory_id })
   }
 

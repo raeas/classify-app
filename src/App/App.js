@@ -63,7 +63,7 @@ class App extends Component {
   addBook = (newBookshelf) => {
     this.setState({
       bookshelf: newBookshelf
-    }, () => console.log('add book set state ', this.state.books))
+    })
   }
 
   onDeleteBook = bookId => {
