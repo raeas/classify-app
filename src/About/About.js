@@ -9,7 +9,7 @@ function About() {
       <h1>About Dewey Classify App</h1>
       <p>The Dewey Classify App let's users become the librarian of their own library.</p>
       <p>Users can enter their books into the app and create a virtual bookshelf by classifying their books with a simplified Dewey Decimal Classification system.</p> 
-      <p>Users can choose how they want to classify their books and can then browse them in shelf order by the classification scheme.</p>
+      <p>Users can choose how they want to classify their books and can then browse the bookshelf entries.</p>
       <h2>How to:</h2>
       <ol>
         <li>From the home page, click "Get Started." Or click "Add Book" in the Header.</li>
