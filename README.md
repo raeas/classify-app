@@ -3,7 +3,7 @@ A virtual bookshelf where you can add and classify your books.
 
 -----
 ### Link to live app
-Live version of the app can be found here <a href = "https://classify-app.vercel.app/">https://classify-app.vercel.app/"</a>
+Live version of the app can be found here <a href = "https://classify-app.vercel.app/">https://classify-app.vercel.app/</a>
 
 -----
 ### Summary
